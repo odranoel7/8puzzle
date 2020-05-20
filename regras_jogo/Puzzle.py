@@ -26,9 +26,13 @@ class Puzzle(AbstractRegrasJogo):
     def isFim(self):
         """ Se a lista estiver ordenada, fim de jogo.
         """
+        auxLista = []
+        for j in range(len(self.elementos)):
+            if self.elementos[j] != 0:
+                auxLista.append(self.elementos[j])
         
-        return all(self.elementos[i] <= self.elementos[i+1]
-            for i, _ in enumerate(self.elementos[:-1]))
+        return all(auxLista[i] <= auxLista[i+1]
+            for i, _ in enumerate(auxLista[:-1]))
 
     def gerarCampoVisao(self, id_agente):
         """ Retorna um EstadoJogoView para ser consumido por um agente
