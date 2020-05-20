@@ -57,10 +57,54 @@ class Puzzle(AbstractRegrasJogo):
         Verifico a ação última registrada e atualizado o estado do jogo
         computando-a.
         """
+        #OBS: I é onde o 0 está, e o J é para onde ele vai depois da permuta!
         from acoes import AcoesJogador
-        if self.acao_jogador.tipo == AcoesJogador.PERMUTAR:
-            i, j = self.acao_jogador.parametros
-            self.elementos[i], self.elementos[j] = self.elementos[j], self.elementos[i]
+        auxI = 0
+        auxJ = 0
+        auxVlrI = 0
+        auxVlrJ = 0
+        if self.acao_jogador.tipo == AcoesJogador.permutar:
+            for i in range(len(self.elementos)):
+                if self.elementos[i] == 0:
+                    pos0 = i
+                    break
+            if self.acao_jogador.parametros == 'C':
+                if pos0 <= 2:
+                    print('Ação invalida')
+                else:
+                    auxI = pos0
+                    auxJ = auxI-3
+                
+
+            elif self.acao_jogador.parametros == 'B':
+                if pos0 >= 6:
+                    print('Ação invalida')
+                else:
+                    auxI = pos0
+                    auxJ = auxI+3
+
+
+            elif self.acao_jogador.parametros == 'E':
+                if pos0 in [0,3,6]:
+                    print('Ação invalida')
+                else:
+                    auxI = pos0
+                    auxJ = auxI-1
+                
+
+            elif self.acao_jogador.parametros == 'D':
+                if pos0 in [2,5,8]:
+                    print('Ação invalida')
+                else:
+                    auxI = pos0
+                    auxJ = auxI+1
+
+            auxVlrI = self.elementos[auxI]
+            auxVlrJ = self.elementos[auxJ]
+            self.elementos[auxI] = auxVlrJ
+            self.elementos[auxJ] = auxVlrI
+            
+            #self.elementos[i], self.elementos[j] = self.elementos[j], self.elementos[i]
         else:
             raise TypeError
 

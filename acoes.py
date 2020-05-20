@@ -10,5 +10,5 @@ class AcaoJogador():
     parametros: tuple = tuple()
 
     @classmethod
-    def permutar(cls, i,j):
-        return cls(AcoesJogador.permutar, (i,j))
+    def permutar(cls, escolhido):
+        return cls(AcoesJogador.permutar, escolhido)
