@@ -26,6 +26,8 @@ class Puzzle(AbstractRegrasJogo):
     def isFim(self):
         """ Se a lista estiver ordenada, fim de jogo.
         """
+
+        #0 na
         auxLista = []
         for j in range(len(self.elementos)):
             if self.elementos[j] != 0:
@@ -72,7 +74,7 @@ class Puzzle(AbstractRegrasJogo):
                 if self.elementos[i] == 0:
                     pos0 = i
                     break
-            if self.acao_jogador.parametros == 'C':
+            if (self.acao_jogador.parametros) == 'C':
                 if pos0 <= 2:
                     print('Ação invalida')
                 else:

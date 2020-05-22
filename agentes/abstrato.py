@@ -22,10 +22,18 @@ def construir_agente(*args, **kwargs):
     """ Método factory para uma instância Agente arbitrária, de acordo com os
     paraâmetros. Pode-se mudar à vontade a assinatura do método.
     """
-    from agentes.tipos import TiposAgentes
-    from agentes.humano import AgentePrepostoESHumano
+    #FAZER UM MÉTODO QUE ESCOLHE O JOGADOR!
+    
+    #HUMANO
+    #from agentes.tipos import TiposAgentes
+    #from agentes.humano import AgentePrepostoESHumano
 
-    if args[0] == TiposAgentes.PREPOSTO_HUMANO:
-        return AgentePrepostoESHumano()
-    else:
-        raise NotImplementedError()
+    #if args[0] == TiposAgentes.PREPOSTO_HUMANO:
+    #    return AgentePrepostoESHumano()
+    #else:
+    #    raise NotImplementedError()
+
+    #BFS
+    from agentes.humano import AgentePrepostoESHumano
+    from agentes.agente_bfs import AgenteBFS
+    return AgenteBFS()

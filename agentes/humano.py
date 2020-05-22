@@ -9,7 +9,7 @@ class AgentePrepostoESHumano(AgenteAbstrato):
         elems_dipostos = percepcao_mundo.disposicao_elementos
         i=0
         for i in range(len(elems_dipostos)):
-            if elems_dipostos[i] != 0:
+            if elems_dipostos[i] != 0: 
                 aux = aux+' '+str(elems_dipostos[i])
             else:
                 aux = aux+' '+' '
