@@ -34,6 +34,8 @@ class ProblemaClassificador(ProblemaAbstrato):
             auxJ = 0
             auxVlrI = 0
             auxVlrJ = 0
+
+            bInvalido = False
             
             for i in range(len(estado_resultante)):
                 if estado_resultante[i] == 0:
@@ -41,32 +43,37 @@ class ProblemaClassificador(ProblemaAbstrato):
                     break
             if (acao.parametros) == 'C':
                 if pos0 <= 2:
-                    print('Ação invalida')
+                    bInvalido = True
+                    #print('Ação invalida')
                 else:
                     auxI = pos0
                     auxJ = auxI-3
 
             elif acao.parametros == 'B':
                 if pos0 >= 6:
-                    print('Ação invalida')
+                    bInvalido = True
+                    #print('Ação invalida')
                 else:
                     auxI = pos0
                     auxJ = auxI+3
 
             elif acao.parametros == 'E':
                 if pos0 in [0, 3, 6]:
-                    print('Ação invalida')
+                    bInvalido = True                    
+                    #print('Ação invalida')
                 else:
                     auxI = pos0
                     auxJ = auxI-1
 
             elif acao.parametros == 'D':
                 if pos0 in [2, 5, 8]:
-                    print('Ação invalida')
+                    bInvalido = True                    
+                    #print('Ação invalida')
                 else:
                     auxI = pos0
                     auxJ = auxI+1
 
+            
             auxVlrI = estado_resultante[auxI]
             auxVlrJ = estado_resultante[auxJ]
             estado_resultante[auxI] = auxVlrJ

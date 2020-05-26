@@ -8,7 +8,7 @@ def busca_arvore(problema):
     borda = [ No(problema.estado_inicial()) ]
     while borda:
     
-        folha = borda.pop(0)
+        folha = borda.pop(0)        
         if problema.teste_objetivo(folha.estado):
             return folha
         

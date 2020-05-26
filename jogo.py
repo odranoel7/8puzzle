@@ -19,24 +19,42 @@ def iniciar_jogo():
     
     # Inicializar e configurar jogo
     jogo = construir_jogo()
-    personagem_jogador = jogo.registrarAgentePersonagem(Personagens.O_JOGADOR)
-    agente_jogador = construir_agente(TiposAgentes.PREPOSTO_HUMANO, Personagens.O_JOGADOR)
+    id_jogador, jogador = jogo.registrarAgenteJogador(), construir_agente()
+    tempo_de_jogo = 0
+    
+    
+    #jogo = construir_jogo()
+    #personagem_jogador = jogo.registrarAgentePersonagem(Personagens.O_JOGADOR)
+    #agente_jogador = construir_agente(TiposAgentes.PREPOSTO_HUMANO, Personagens.O_JOGADOR)
+    #agente_jogador = construir_agente(TiposAgentes.AUTO_BFS, Personagens.O_JOGADOR)
     
     tempo_de_jogo = 0
     while not jogo.isFim():
-        
-        # Mostrar mundo ao jogador
-        ambiente_perceptivel = jogo.gerarCampoVisao(personagem_jogador)
-        agente_jogador.adquirirPercepcao(ambiente_perceptivel)
+        ambiente_perceptivel = jogo.gerarCampoVisao(id_jogador)
+        jogador.adquirirPercepcao(ambiente_perceptivel)
         
         # Decidir jogada e apresentar ao jogo
-        acao = agente_jogador.escolherProximaAcao()
-        jogo.registrarProximaAcao(personagem_jogador, acao)
+        acao = jogador.escolherProximaAcao()
+        jogo.registrarProximaAcao(id_jogador, acao)
 
         # Atualizar jogo
         tempo_corrente = ler_tempo()
         jogo.atualizarEstado(tempo_corrente - tempo_de_jogo)
         tempo_de_jogo += tempo_corrente
+
+        
+        # Mostrar mundo ao jogador
+        #ambiente_perceptivel = jogo.gerarCampoVisao(personagem_jogador)
+        #agente_jogador.adquirirPercepcao(ambiente_perceptivel)
+        
+        # Decidir jogada e apresentar ao jogo
+        #acao = agente_jogador.escolherProximaAcao()
+        #jogo.registrarProximaAcao(personagem_jogador, acao)
+
+        # Atualizar jogo
+        #tempo_corrente = ler_tempo()
+        #jogo.atualizarEstado(tempo_corrente - tempo_de_jogo)
+        #tempo_de_jogo += tempo_corrente
         
     jogo.terminarJogo()
 

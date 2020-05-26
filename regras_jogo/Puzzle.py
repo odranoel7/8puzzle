@@ -1,10 +1,14 @@
+from enum import Enum, auto
+class AgentesOrdenador(Enum):
+    JOGADOR_PADRAO = auto()
+
+
 from regras_jogo.regras_abstratas import AbstractRegrasJogo
 from regras_jogo.personagens import Personagens
 from random import randint
 class Puzzle(AbstractRegrasJogo):
     
-    def __init__(self):
-        
+    def __init__(self):        
         #self.elementos = [randint(0, 8) for _ in range(8)]
         
         
@@ -26,15 +30,42 @@ class Puzzle(AbstractRegrasJogo):
     def isFim(self):
         """ Se a lista estiver ordenada, fim de jogo.
         """
-
-        #0 na
+        from agentes.tipos import TiposAgentes
+        
         auxLista = []
+        fim = False
         for j in range(len(self.elementos)):
             if self.elementos[j] != 0:
                 auxLista.append(self.elementos[j])
         
-        return all(auxLista[i] <= auxLista[i+1]
-            for i, _ in enumerate(auxLista[:-1]))
+        fim = all(auxLista[i] <= auxLista[i+1]
+            for i, _ in enumerate(auxLista[:]))                
+
+        if fim:
+            if not ((self.elementos[len(self.elementos)-1] == 0) or (self.elementos[0] == 0)):
+                fim = False
+        
+
+        #print('Esse é o valor que quer saber -> '+str(auxLista[3:6]))
+
+        
+
+
+        if (((self.elementos[0:3]==[1,2,3]) or (self.elementos[0:3]==[0,1,2]))
+         or ((self.elementos[3:6]==[4,5,6]) or (self.elementos[3:6]==[3,4,5])) 
+         or ((self.elementos[6:9]==[6,7,8]) or (self.elementos[6:9]==[7,8,0]))):     
+            aux = ''
+            i=0
+            for i in range(len(self.elementos)):
+                if self.elementos[i] != 0: 
+                    aux = aux+' '+str(self.elementos[i])
+                else:
+                    aux = aux+' '+' '
+                if ((i == 2) or (i == 5) or (i == (len(self.elementos)-1))):                
+                    print(aux+'\n')
+                    aux = ''        
+        
+        return fim
 
     def gerarCampoVisao(self, id_agente):
         """ Retorna um EstadoJogoView para ser consumido por um agente
@@ -115,6 +146,11 @@ class Puzzle(AbstractRegrasJogo):
             raise TypeError
 
         self.pontuacao += 1
+
+    def registrarAgenteJogador(self, elem_agente=AgentesOrdenador.JOGADOR_PADRAO):
+        """ Só há um agente, o jogador, então não preciso de lógica.
+        """
+        return 1
     
     def terminarJogo(self):
         print(f'Fim de jogo! Sua pontuação foi de {self.pontuacao}.')
