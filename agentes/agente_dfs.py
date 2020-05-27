@@ -1,5 +1,5 @@
 from agentes.humano import AgentePrepostoESHumano
-class AgenteBFS(AgentePrepostoESHumano):
+class AgenteDFS(AgentePrepostoESHumano):
     
     def __init__(self):
         # Uma sequencia de acoes, inicialmente vazia
@@ -25,12 +25,12 @@ class AgenteBFS(AgentePrepostoESHumano):
     
     def escolherProximaAcao(self):
         # Se seq estiver vazia
-        from agentes.buscas.buscas import busca_arvore_bfs
+        from agentes.buscas.buscas import busca_arvore_dfs
         if not self.seq:
             self.formularProblema()
 
-            no_solucao = busca_arvore_bfs(self.problema)
+            no_solucao = busca_arvore_dfs(self.problema)
             self.seq = no_solucao.extrairSolucao()
         
-        acao = self.seq.pop(0)
+        acao = self.seq.pop()
         return acao

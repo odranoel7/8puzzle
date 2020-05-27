@@ -37,5 +37,8 @@ def construir_agente(*args, **kwargs):
     #BFS
     from agentes.humano import AgentePrepostoESHumano
     from agentes.agente_bfs import AgenteBFS
-    return AgentePrepostoESHumano()
+    from agentes.agente_dfs import AgenteDFS
+    #return AgentePrepostoESHumano()
     #return AgenteBFS()
+    
+    return AgenteDFS()

@@ -39,7 +39,7 @@ class Puzzle(AbstractRegrasJogo):
                 auxLista.append(self.elementos[j])
         
         fim = all(auxLista[i] <= auxLista[i+1]
-            for i, _ in enumerate(auxLista[:]))                
+            for i, _ in enumerate(auxLista[:-1]))                
 
         if fim:
             if not ((self.elementos[len(self.elementos)-1] == 0) or (self.elementos[0] == 0)):
