@@ -42,7 +42,7 @@ class Puzzle(AbstractRegrasJogo):
             for i, _ in enumerate(auxLista[:-1]))                
 
         if fim:
-            if not ((self.elementos[len(self.elementos)-1] == 0) or (self.elementos[0] == 0)):
+            if not ((self.elementos[len(self.elementos)-1] == 0)):
                 fim = False
         
 

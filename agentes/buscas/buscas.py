@@ -5,10 +5,26 @@ def busca_arvore_bfs(problema):
     
         Ao final, self.seq deve conter uma lista de acoes.
     '''
+    #from agentes.buscas.heuristica import heuristica_busca_gulosa
     borda = [ No(problema.estado_inicial()) ]
-    while borda:
     
-        folha = borda.pop(0)        
+    while borda:
+        
+        
+
+        folha = borda.pop(0)
+
+        #print(str(folha.estado))
+        #aux = heuristica_busca_gulosa(folha.estado)
+        #print()
+        #print('retorno da heuristica '+str(aux))
+        #print()
+        #print()
+        #print('removeu -> '+str(folha.estado))
+        #print()
+
+
+
         if problema.teste_objetivo(folha.estado):
             return folha
         
@@ -36,3 +52,30 @@ def busca_arvore_dfs(problema, limitado=0):
             borda.append(expandido)
     if retorno:
         return None
+
+def busca_gulosa(problema):
+    from agentes.buscas.heuristica import heuristica_busca_gulosa
+    borda = [ No(problema.estado_inicial()) ]
+    folha = None
+    fn = []
+    while borda:
+        folha = borda.pop(0)
+        aux = heuristica_busca_gulosa(folha.estado)
+        fn.append(aux)
+        #print(str(folha.estado))
+        
+        #print()
+        #print('retorno da heuristica '+str(aux))
+        #print()
+        #print()
+        #print('removeu -> '+str(folha.estado))
+        #print()
+
+
+
+        if problema.teste_objetivo(folha.estado):
+            return folha
+        
+        for acao in problema.acoes(folha.estado):
+            expandido = No.novoNoFilho(problema, folha, acao)
+            borda.append(expandido)
