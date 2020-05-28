@@ -38,7 +38,8 @@ def construir_agente(*args, **kwargs):
     from agentes.humano import AgentePrepostoESHumano
     from agentes.agente_bfs import AgenteBFS
     from agentes.agente_dfs import AgenteDFS
+    from agentes.agente_dfs_limitado import AgenteDFS_limitado
     #return AgentePrepostoESHumano()
-    #return AgenteBFS()
-    
-    return AgenteDFS()
+    #return AgenteBFS()    
+    #return AgenteDFS()
+    return AgenteDFS_limitado()
