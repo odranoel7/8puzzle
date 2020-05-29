@@ -1,4 +1,3 @@
-
 def heuristica_busca_gulosa(estado):
     #return 1
     valor = 0
@@ -16,8 +15,8 @@ def heuristica_busca_gulosa(estado):
         for j in range (0,len(esperado)):
             
             if esperado[i] == estado_resultante[j]:
-                #print('valor de i -> '+str(i))                
-                #print('valor de j -> '+str(j))
+                print('valor de i -> '+str(i))                
+                print('valor de j -> '+str(j))
 
                 if (esperado[i] == 0) and (j == 1):
                     aux = 3
@@ -41,6 +40,7 @@ def heuristica_busca_gulosa(estado):
                 else:
                     if i > j: 
                         if i-j == 3:
+                            
                             aux=3
                             bAux=True
                         elif (i-j) > 2:
@@ -49,10 +49,13 @@ def heuristica_busca_gulosa(estado):
                         else:
                             #print('entrou')
                             aux=i-j
-                            bAux = True
+                            if aux == 4:
+                                bAux = False
+                            else:
+                                bAux = True
                     else:
                         if i == j:
-                            #print('é igual')                        
+                            print('é igual')
                             aux=0
                         else:
                             #print('foi pro else')
@@ -65,22 +68,23 @@ def heuristica_busca_gulosa(estado):
                             else:
                                 aux=j-i
                                 bAux=True
-                    if aux ==4:
+                    if aux==4:
                         aux=2
-                    elif aux==1 and bAux and ((i==2 and j==3) or (i==5 and j==6)):
+                    elif aux==1 and bAux and ((i==2 and j==3) or (i==5 and j==6) or (i==6 and j==5) or (i==3 and j==2)):
                         aux=3
                     elif aux==3 and bAux:
                         aux=1
                     #elif aux==4 and bAux:
                     #    aux=2
-                    #print('valor do aux -> '+str(aux))
+                    print('valor do aux -> '+str(aux))
                 valor = valor+aux
-                #print('valor do valor  '+str(valor))
+                print('valor do valor  '+str(valor))
                 break
-        #print('continua sim')
-        #print()
-        #print()
-    #print()
-    #print('vai retornar')
+        print('continua sim')
+        print()
+        print()
+    print()
+    print('vai retornar')
+    print()
     #print(valor)
     return valor

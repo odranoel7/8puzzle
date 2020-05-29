@@ -35,9 +35,9 @@ def iniciar_jogo():
         
         # Decidir jogada e apresentar ao jogo
         acao = jogador.escolherProximaAcao()
-        if acao is None:
-            print('Sem solução')
-            break
+        #if acao is None:
+        #    print('Sem solução')
+        #    break
         jogo.registrarProximaAcao(id_jogador, acao)
 
         # Atualizar jogo

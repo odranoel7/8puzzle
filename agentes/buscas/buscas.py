@@ -56,7 +56,7 @@ def busca_arvore_dfs(problema, limitado=0):
 def busca_gulosa(problema):
     from agentes.buscas.heuristica import heuristica_busca_gulosa
     borda = [ No(problema.estado_inicial()) ]
-    folha = None
+    
     fn = []
     bordaAux = []
     
@@ -70,6 +70,7 @@ def busca_gulosa(problema):
             #print()
             #print('removeu -> '+str(folha.estado))
             #print()
+        borda.pop(0)
         auxMenor = 0
         auxJ = 0
         for j in range(0,len(fn)):
@@ -80,15 +81,28 @@ def busca_gulosa(problema):
                     auxJ = j
                     auxMenor = fn[j]
         
-        
+        print('Achou a menor heurística - > '+str(auxMenor))
+        print('Que é ->  '+str(bordaAux[auxJ].estado))
+        print()
 
 
         if problema.teste_objetivo(bordaAux[auxJ].estado):
+            print('Achou o objetivo')
+            print()
             return bordaAux[auxJ]
         
+        print('tamanho antes do for -> '+str(len(borda)))
+        print()
         for acao in problema.acoes(bordaAux[auxJ].estado):
             expandido = No.novoNoFilho(problema, bordaAux[auxJ], acao)            
             borda.append(expandido)
-
+        print('tamanho depois do for -> '+str(len(borda)))
+        print()
+        print('tamanho do fn antes de remover -> '+str(len(fn)))
+        print('tamanho da bordaAux antes de remover -> '+str(len(fn)))
+        print()
         fn.pop(auxJ)
         bordaAux.pop(auxJ)
+        print('tamanho do fn depois de remover -> '+str(len(fn)))
+        print('tamanho da bordaAux depois de remover -> '+str(len(fn)))
+
