@@ -40,6 +40,7 @@ def construir_agente(*args, **kwargs):
     from agentes.agente_dfs import AgenteDFS
     from agentes.agente_dfs_limitado import AgenteDFS_limitado
     from agentes.agente_gulosa import AgenteGulosa
+    from agentes.agente_a_estrela import AgenteAEstrela
 
     while True:
         resp = input('1 -> Agente humano.'+"\n"+'2 -> Agente BFS.'+"\n"+'3 -> Agente DFS.'+"\n"+'4 -> Agente DFS limitado.'+"\n"+'5 -> Busca gulosa.'+"\n"+'6 -> Busca A-Estrela'+"\n")
@@ -53,7 +54,7 @@ def construir_agente(*args, **kwargs):
             return AgenteDFS_limitado()
         elif resp == '5':
             return AgenteGulosa()
-        #elif resp == '6':
-            #return AgenteAEstrela()
+        elif resp == '6':
+            return AgenteAEstrela()
         else:
             print("\n"+'Opção inválida, digite a opção correta!'+"\n")

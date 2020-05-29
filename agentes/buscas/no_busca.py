@@ -20,3 +20,11 @@ class No():
         novo_estado = problema.resultado(pai.estado, acao)
         gn = pai.gn + problema.custo_transicao(pai.estado, acao, novo_estado)
         return No(novo_estado, acao, gn, pai)
+    #def novoNoFilho(problema, pai, acao):
+    #    
+    #    novo_estado = problema.resultado(pai.estado, acao)
+    #    if pai.estado != novo_estado:
+    #        gn = pai.gn + problema.custo_transicao(pai.estado, acao, novo_estado)
+    #        return No(novo_estado, acao, gn, pai)
+    #    else:
+    #        return None

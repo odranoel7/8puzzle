@@ -13,12 +13,12 @@ class Puzzle(AbstractRegrasJogo):
         
         
         
-        self.elementos = []
-        while len(self.elementos) < 9:
-            aux = randint(0,8)
-            if aux not in self.elementos:
-                self.elementos.append(aux)
-        
+        self.elementos = [0,1,3,4,2,5,7,8,6]
+        #while len(self.elementos) < 9:
+        #    aux = randint(0,8)
+        #    if aux not in self.elementos:
+        #        self.elementos.append(aux)
+        #print('elementos -> '+str(self.elementos))
         self.pontuacao = 0
         #print('tamanho'+str(len(self.elementos)))
 
@@ -71,7 +71,6 @@ class Puzzle(AbstractRegrasJogo):
         """ Retorna um EstadoJogoView para ser consumido por um agente
         específico. Objeto deve conter apenas descrição de elementos visíveis
         para este agente.
-
         EstadoJogoView é um objeto imutável ou uma cópia do jogo, de forma que
         sua manipulação direta não tem nenhum efeito no mundo de jogo real.
         """
@@ -90,7 +89,6 @@ class Puzzle(AbstractRegrasJogo):
     def atualizarEstado(self, diferencial_tempo):
         """ Não preciso me preocupar com a passagem do tempo, pois só uma
         jogada é feita por vez, e o jogo não muda seu estado sem jogadas.
-
         Verifico a ação última registrada e atualizado o estado do jogo
         computando-a.
         """

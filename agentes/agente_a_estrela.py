@@ -1,5 +1,5 @@
 from agentes.humano import AgentePrepostoESHumano
-class AgenteGulosa(AgentePrepostoESHumano):
+class AgenteAEstrela(AgentePrepostoESHumano):
     
     def __init__(self):
         # Uma sequencia de acoes, inicialmente vazia
@@ -25,11 +25,11 @@ class AgenteGulosa(AgentePrepostoESHumano):
     
     def escolherProximaAcao(self):
         # Se seq estiver vazia
-        from agentes.buscas.buscas import busca_gulosa
+        from agentes.buscas.buscas import busca_a_estrela
         if not self.seq:
             self.formularProblema()
 
-            no_solucao = busca_gulosa(self.problema)
+            no_solucao = busca_a_estrela(self.problema)
             #if no_solucao is None:
             #    return None
             #else:

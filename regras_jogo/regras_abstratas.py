@@ -64,4 +64,5 @@ def construir_jogo(*args,**kwargs):
     parâmetros. Pode-se mudar à vontade a assinatura do método.
     """
     from regras_jogo.Puzzle import Puzzle
+    print(Puzzle)
     return Puzzle()

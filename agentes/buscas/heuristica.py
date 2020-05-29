@@ -1,4 +1,4 @@
-def heuristica_busca_gulosa(estado):
+def heuristica(estado):
     #return 1
     valor = 0
     estado_resultante = estado.estado
@@ -15,8 +15,8 @@ def heuristica_busca_gulosa(estado):
         for j in range (0,len(esperado)):
             
             if esperado[i] == estado_resultante[j]:
-                print('valor de i -> '+str(i))                
-                print('valor de j -> '+str(j))
+                #print('valor de i -> '+str(i))                
+                #print('valor de j -> '+str(j))
 
                 if (esperado[i] == 0) and (j == 1):
                     aux = 3
@@ -55,7 +55,7 @@ def heuristica_busca_gulosa(estado):
                                 bAux = True
                     else:
                         if i == j:
-                            print('é igual')
+                            #print('é igual')
                             aux=0
                         else:
                             #print('foi pro else')
@@ -76,15 +76,15 @@ def heuristica_busca_gulosa(estado):
                         aux=1
                     #elif aux==4 and bAux:
                     #    aux=2
-                    print('valor do aux -> '+str(aux))
+                    #print('valor do aux -> '+str(aux))
                 valor = valor+aux
-                print('valor do valor  '+str(valor))
+                #print('valor do valor  '+str(valor))
                 break
-        print('continua sim')
-        print()
-        print()
-    print()
-    print('vai retornar')
-    print()
+        #print('continua sim')
+        #print()
+        #print()
+    #print()
+    #print('vai retornar')
+    #print()
     #print(valor)
     return valor
