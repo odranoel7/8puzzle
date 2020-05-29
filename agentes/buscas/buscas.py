@@ -58,24 +58,37 @@ def busca_gulosa(problema):
     borda = [ No(problema.estado_inicial()) ]
     folha = None
     fn = []
+    bordaAux = []
+    
     while borda:
-        folha = borda.pop(0)
-        aux = heuristica_busca_gulosa(folha.estado)
-        fn.append(aux)
-        #print(str(folha.estado))
+        i=0
+        for i in range(0,len(borda)):
+            bordaAux.append(borda[i])
+            fn.append(heuristica_busca_gulosa(bordaAux[i]))
+            #print()
+            #print()
+            #print()
+            #print('removeu -> '+str(folha.estado))
+            #print()
+        auxMenor = 0
+        auxJ = 0
+        for j in range(0,len(fn)):
+            if j == 0:
+                auxMenor = fn[j]
+            else:
+                if fn[j] < auxMenor:
+                    auxJ = j
+                    auxMenor = fn[j]
         
-        #print()
-        #print('retorno da heuristica '+str(aux))
-        #print()
-        #print()
-        #print('removeu -> '+str(folha.estado))
-        #print()
-
-
-
-        if problema.teste_objetivo(folha.estado):
-            return folha
         
-        for acao in problema.acoes(folha.estado):
-            expandido = No.novoNoFilho(problema, folha, acao)
+
+
+        if problema.teste_objetivo(bordaAux[auxJ].estado):
+            return bordaAux[auxJ]
+        
+        for acao in problema.acoes(bordaAux[auxJ].estado):
+            expandido = No.novoNoFilho(problema, bordaAux[auxJ], acao)            
             borda.append(expandido)
+
+        fn.pop(auxJ)
+        bordaAux.pop(auxJ)

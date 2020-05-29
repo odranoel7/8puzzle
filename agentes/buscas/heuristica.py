@@ -2,7 +2,8 @@
 def heuristica_busca_gulosa(estado):
     #return 1
     valor = 0
-    estado_resultante = list(estado)
+    estado_resultante = estado.estado
+    
     aux = 0
     bAux = False
     esperado = [1,2,3,4,5,6,7,8,0]
