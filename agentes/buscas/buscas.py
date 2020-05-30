@@ -17,11 +17,46 @@ def busca_arvore_dfs(problema, limitado=0):
     
     while borda:
         folha = borda.pop()
+        
+
         if problema.teste_objetivo(folha.estado):
             return folha
         
         for acao in problema.acoes(folha.estado):
             expandido = No.novoNoFilho(problema, folha, acao)
+            if limitado != 0:
+                if expandido.calcularProfundidade() == limitado:
+                    return None
+            borda.append(expandido)
+
+def busca_arvore_dfs_iterativo(problema):
+    borda = [ No(problema.estado_inicial()) ]
+    while True:
+        limitado = input('Até qual altura você deseja percorrer sua busca?  ')
+        if int(limitado):
+            break
+
+    while borda:
+        folha = borda.pop()
+        if problema.teste_objetivo(folha.estado):
+            return folha
+        
+        for acao in problema.acoes(folha.estado):
+            expandido = No.novoNoFilho(problema, folha, acao)
+            if expandido.calcularProfundidade() == int(limitado):
+                while True:
+                    resp = input('1- Deseja continuar buscando? '+"\n"+
+                                 '2- Não, estou satisfeito.'+"\n"
+                                )
+                    if resp == '1':
+                        while True:
+                            limitado = input('Até qual altura você deseja percorrer sua busca?  ')
+                            if int(limitado):
+                                break
+                        break
+                    elif resp == '2':
+                        return None
+
             borda.append(expandido)
 
 def busca_gulosa(problema):

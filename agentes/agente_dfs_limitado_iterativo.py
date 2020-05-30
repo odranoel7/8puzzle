@@ -1,5 +1,5 @@
 from agentes.humano import AgentePrepostoESHumano
-class AgenteAEstrela(AgentePrepostoESHumano):
+class AgenteDFS_limitado_iterativo(AgentePrepostoESHumano):
     
     def __init__(self):
         # Uma sequencia de acoes, inicialmente vazia
@@ -25,12 +25,13 @@ class AgenteAEstrela(AgentePrepostoESHumano):
     
     def escolherProximaAcao(self):
         # Se seq estiver vazia
-        from agentes.buscas.buscas import busca_a_estrela
+        from agentes.buscas.buscas import busca_arvore_dfs_iterativo
         if not self.seq:
             self.formularProblema()
-
-            no_solucao = busca_a_estrela(self.problema)
-            self.seq = no_solucao.extrairSolucao()
-        
-        acao = self.seq.pop(0)
-        return acao
+            no_solucao = busca_arvore_dfs_iterativo(self.problema)
+            if no_solucao is None:
+                return None
+            else:
+                self.seq = no_solucao.extrairSolucao()
+                acao = self.seq.pop(0)
+                return acao

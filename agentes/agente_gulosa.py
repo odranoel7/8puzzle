@@ -30,9 +30,7 @@ class AgenteGulosa(AgentePrepostoESHumano):
             self.formularProblema()
 
             no_solucao = busca_gulosa(self.problema)
-            #if no_solucao is None:
-            #    return None
-            #else:
             self.seq = no_solucao.extrairSolucao()
+        
         acao = self.seq.pop(0)
         return acao

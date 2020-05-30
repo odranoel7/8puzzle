@@ -28,9 +28,10 @@ class AgenteDFS(AgentePrepostoESHumano):
         from agentes.buscas.buscas import busca_arvore_dfs
         if not self.seq:
             self.formularProblema()
-
             no_solucao = busca_arvore_dfs(self.problema)
-            self.seq = no_solucao.extrairSolucao()
-        
-        acao = self.seq.pop()
-        return acao
+            if no_solucao is None:
+                return None
+            else:
+                self.seq = no_solucao.extrairSolucao()
+                acao = self.seq.pop()
+                return acao

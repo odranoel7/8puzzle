@@ -9,18 +9,10 @@ from random import randint
 class Puzzle(AbstractRegrasJogo):
     
     def __init__(self):        
-        #self.elementos = [randint(0, 8) for _ in range(8)]
-        
-        
-        
         self.elementos = [0,1,3,4,2,5,7,8,6]
-        #while len(self.elementos) < 9:
-        #    aux = randint(0,8)
-        #    if aux not in self.elementos:
-        #        self.elementos.append(aux)
-        #print('elementos -> '+str(self.elementos))
+       
         self.pontuacao = 0
-        #print('tamanho'+str(len(self.elementos)))
+       
 
     def registrarAgentePersonagem(self, personagem=Personagens.O_JOGADOR):
         """ Só há um agente, o jogador, então não preciso de lógica.
@@ -46,24 +38,20 @@ class Puzzle(AbstractRegrasJogo):
                 fim = False
         
 
-        #print('Esse é o valor que quer saber -> '+str(auxLista[3:6]))
 
-        
-
-
-        if (((self.elementos[0:3]==[1,2,3]) or (self.elementos[0:3]==[0,1,2]))
-         or ((self.elementos[3:6]==[4,5,6]) or (self.elementos[3:6]==[3,4,5])) 
-         or ((self.elementos[6:9]==[6,7,8]) or (self.elementos[6:9]==[7,8,0]))):     
-            aux = ''
-            i=0
-            for i in range(len(self.elementos)):
-                if self.elementos[i] != 0: 
-                    aux = aux+' '+str(self.elementos[i])
-                else:
-                    aux = aux+' '+' '
-                if ((i == 2) or (i == 5) or (i == (len(self.elementos)-1))):                
-                    print(aux+'\n')
-                    aux = ''        
+        #if (((self.elementos[0:3]==[1,2,3]) or (self.elementos[0:3]==[0,1,2]))
+        # or ((self.elementos[3:6]==[4,5,6]) or (self.elementos[3:6]==[3,4,5])) 
+        # or ((self.elementos[6:9]==[6,7,8]) or (self.elementos[6:9]==[7,8,0]))):     
+        #    aux = ''
+        #    i=0
+        #    for i in range(len(self.elementos)):
+        #        if self.elementos[i] != 0: 
+        #            aux = aux+' '+str(self.elementos[i])
+        #        else:
+        #            aux = aux+' '+' '
+        #        if ((i == 2) or (i == 5) or (i == (len(self.elementos)-1))):                
+        #            print(aux+'\n')
+        #            aux = ''        
         
         return fim
 
@@ -77,7 +65,7 @@ class Puzzle(AbstractRegrasJogo):
         from percepcoes import PercepcoesJogador
         return PercepcoesJogador(tuple(self.elementos))
 
-        #return elementos
+        
 
     def registrarProximaAcao(self, id_agente, acao):
         """ Como só há um agente atuando no mundo, o próprio jogador, não é
